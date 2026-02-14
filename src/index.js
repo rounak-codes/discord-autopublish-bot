@@ -4,7 +4,7 @@ dns.setDefaultResultOrder('ipv4first');
 
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 app.get('/', (req, res) => {
     res.send('Bot is Alive! 🤖');
@@ -25,9 +25,8 @@ const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent
-    ],
-    // 👇 ADD THIS SECTION 👇
+        GatewayIntentBits.MessageContent // Required to read message content
+    ]
     ws: {
         properties: {
             browser: "Discord iOS" // Tricks Discord into thinking this is an iPhone
