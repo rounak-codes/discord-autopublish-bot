@@ -5,7 +5,8 @@ module.exports = {
     name: 'messageCreate',
     async execute(message) {
         // 1. Basic Filters
-        if (message.author.bot) return;
+        // Ignore THIS bot only
+        if (message.author.id === message.client.user.id) return;
         if (!message.guild) return;
         if (message.channel.type !== ChannelType.GuildAnnouncement) return;
 
