@@ -25,8 +25,14 @@ const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
         GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent // Required to read message content
-    ]
+        GatewayIntentBits.MessageContent
+    ],
+    // 👇 ADD THIS SECTION 👇
+    ws: {
+        properties: {
+            browser: "Discord iOS" // Tricks Discord into thinking this is an iPhone
+        }
+    }
 });
 
 // --- DEEP DEBUG LOGGING ---
