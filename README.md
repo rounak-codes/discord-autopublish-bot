@@ -147,7 +147,3 @@ deploy-commands.js
 * Slash command changes require re-running `deploy-commands.js`.
 
 ---
-
-## 📄 License
-
-MIT License
