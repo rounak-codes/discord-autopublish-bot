@@ -81,6 +81,15 @@ mongoose.connect(process.env.MONGO_URI)
         console.error(err);
     });
 
+// --- GRACEFUL SHUTDOWN ---
+const shutdown = async () => {
+    console.log('🛑 Shutting down...');
+    if (client) await client.destroy();
+    if (mongoose) await mongoose.connection.close();
+    console.log('👋 Connections closed. Bye!');
+    process.exit(0);
+};
+
 // Handle generic process termination signals
 process.on('SIGINT', shutdown);
 process.on('SIGTERM', shutdown);
