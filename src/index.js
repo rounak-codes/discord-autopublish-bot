@@ -26,6 +26,14 @@ const client = new Client({
     ]
 });
 
+// --- DEEP DEBUG LOGGING ---
+client.on('debug', (info) => {
+    // Only show login-related debug info
+    if (info.toLowerCase().includes('heartbeat') || info.toLowerCase().includes('identif')) {
+        console.log(`[DEBUG] ${info}`);
+    }
+});
+
 client.commands = new Collection();
 
 // --- Command Handler ---
