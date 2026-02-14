@@ -1,7 +1,6 @@
 <p align="center">
   <img src="assets/logo.png" width="360" alt="Discord AutoPublish Bot Logo">
 </p>
-
 # 📢 Discord AutoPublish Bot
 
 A lightweight Discord bot that automatically crossposts messages in Announcement channels.
