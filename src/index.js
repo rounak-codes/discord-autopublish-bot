@@ -1,4 +1,7 @@
 // --- KEEP-ALIVE SERVER ---
+const dns = require('node:dns');
+dns.setDefaultResultOrder('ipv4first');
+
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
