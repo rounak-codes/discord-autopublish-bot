@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.png" width="360" alt="Discord AutoPublish Bot Logo">
+  <img src="assets/logo.png" width="540" alt="Discord AutoPublish Bot Logo">
 </p>
 
 # 📢 Discord AutoPublish Bot
