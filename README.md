@@ -151,5 +151,3 @@ deploy-commands.js
 ## 📄 License
 
 MIT License
-
-```
