@@ -7,8 +7,8 @@ app.get('/', (req, res) => {
     res.send('Bot is Alive! 🤖');
 });
 
-app.listen(port, () => {
-    console.log(`Keep-Alive Server listening on port ${port}`);
+app.listen(port, '0.0.0.0', () => {
+    console.log(`Server is running on port ${port}`);
 });
 // -------------------------
 
