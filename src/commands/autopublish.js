@@ -36,7 +36,9 @@ module.exports = {
             const state = interaction.options.getBoolean('state');
             config.enabled = state;
             await config.save();
-            return interaction.editReply(`✅ Auto-publish system has been **${state ? 'ENABLED' : 'DISABLED'}** for this server.`);
+            return interaction.editReply(
+                `✅ Auto-publish system has been **${state ? 'ENABLED' : 'DISABLED'}** for this server.`
+            );
         }
 
         if (sub === 'channel') {
@@ -54,9 +56,11 @@ module.exports = {
             } else {
                 config.whitelistedChannels = config.whitelistedChannels.filter(id => id !== channel.id);
             }
-            
+
             await config.save();
-            return interaction.editReply(`✅ Channel ${channel} has been **${action === 'add' ? 'added to' : 'removed from'}** the publish list.`);
-        }
-    }
+            return interaction.editReply(
+                `✅ Channel ${channel} has been **${action === 'add' ? 'added to' : 'removed from'}** the publish list.`
+            );
+        }}
+
 };
