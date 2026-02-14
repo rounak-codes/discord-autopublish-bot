@@ -67,17 +67,26 @@ client.on('interactionCreate', async interaction => {
 });
 
 // --- Database & Login ---
+console.log('🔄 Attempting to connect to Database...');
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         console.log('✅ Connected to MongoDB Atlas');
-        // We return the login promise so errors are caught by the .catch() below
-        return client.login(process.env.DISCORD_TOKEN);
+        
+        // DEBUG: Check if token exists and print partial (safe)
+        const token = process.env.DISCORD_TOKEN;
+        if (!token) {
+            throw new Error('❌ CRITICAL: DISCORD_TOKEN is missing or empty!');
+        }
+        console.log(`🔎 Token detected (Length: ${token.length}). Starts with: ${token.substring(0, 5)}...`);
+        
+        console.log('🔄 Attempting to log in to Discord...');
+        return client.login(token);
     })
     .then(() => {
-        console.log(`✅ Logged in as ${client.user.tag}!`);
+        console.log(`✅ SUCCESS: Logged in as ${client.user.tag}!`);
     })
     .catch((err) => {
-        console.error('❌ STARTUP ERROR:');
+        console.error('❌ FATAL ERROR DURING STARTUP:');
         console.error(err);
     });
 
