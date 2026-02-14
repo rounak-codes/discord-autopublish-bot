@@ -69,19 +69,17 @@ client.on('interactionCreate', async interaction => {
 // --- Database & Login ---
 mongoose.connect(process.env.MONGO_URI)
     .then(() => {
-        console.log('Connected to MongoDB Atlas');
-        client.login(process.env.DISCORD_TOKEN);
+        console.log('✅ Connected to MongoDB Atlas');
+        // We return the login promise so errors are caught by the .catch() below
+        return client.login(process.env.DISCORD_TOKEN);
     })
-    .catch((err) => console.error('Database connection failed:', err));
-
-// --- GRACEFUL SHUTDOWN ---
-const shutdown = async () => {
-    console.log('🛑 Shutting down...');
-    await client.destroy();
-    await mongoose.connection.close();
-    console.log('👋 Connections closed. Bye!');
-    process.exit(0);
-};
+    .then(() => {
+        console.log(`✅ Logged in as ${client.user.tag}!`);
+    })
+    .catch((err) => {
+        console.error('❌ STARTUP ERROR:');
+        console.error(err);
+    });
 
 // Handle generic process termination signals
 process.on('SIGINT', shutdown);
